@@ -8,7 +8,6 @@ namespace DL
 {
     public class CustRepository : IRepository
     {
-        private static List<Customers> cList;
         private const string _custFilePath = "./../DL/Database/Customers.json";
         private string _jsonString;
         JsonSerializerOptions indent = new JsonSerializerOptions{WriteIndented=true};
@@ -22,9 +21,11 @@ namespace DL
             {
                 throw new Exception("The path to customer database is invalid");
             }
-            cList = GetAllCustomers();
-            cList.Add(p_cust);
-            JsonSerializer.Serialize(cList,indent);
+             List<Customers> aList;
+            aList = GetAllCustomers();
+            aList.Add(p_cust);
+            _jsonString=JsonSerializer.Serialize(aList,indent);
+            File.WriteAllText(_custFilePath,_jsonString);
             return p_cust;
         }
         public List<Customers> GetAllCustomers()
@@ -38,6 +39,7 @@ namespace DL
                 
                 throw new Exception("The path to customer database is invalid");
             }
+            List<Customers> cList;
             cList = JsonSerializer.Deserialize<List<Customers>>(_jsonString);
             return cList;
         }

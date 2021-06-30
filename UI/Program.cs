@@ -11,7 +11,6 @@ namespace UI
         static void Main(string[] args)
         {
             Console.Clear();
-            //call to initialize BL file so that the JSON can be imported into the customer list
             IMenu newMenu = new BeginMenu();
             bool loop = true;
             MenuTitle location = MenuTitle.BaseMenu;

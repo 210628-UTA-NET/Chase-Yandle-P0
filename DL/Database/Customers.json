@@ -1,8 +1,14 @@
 [
-    {
-        "cName": "test",
-        "cAddr":"",
-        "cPhone":"",
-        "cEmail":""
-    }
+  {
+    "cName": "test",
+    "cAddr": "",
+    "cPhone": "",
+    "cEmail": ""
+  },
+  {
+    "cName": "Chase Yandle",
+    "cAddr": "203 Church St",
+    "cPhone": "919-623-3658",
+    "cEmail": "cayandle@live.com"
+  }
 ]

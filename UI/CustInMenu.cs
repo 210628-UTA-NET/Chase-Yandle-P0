@@ -50,7 +50,7 @@ namespace UI
                     add.cAddr=tAddr;
                     add.cPhone=tPhone;
                     add.cEmail=tEmail;
-                    _custBL.AddCustomer(add);              
+                    Console.WriteLine(_custBL.AddCustomer(add).cName);              
                 }
                 return MenuTitle.CustInputMenu;
                 
