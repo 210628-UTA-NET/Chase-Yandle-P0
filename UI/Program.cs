@@ -3,6 +3,7 @@ using Models;
 using System.Collections.Generic;
 using BL;
 using DL;
+using System.Threading;
 
 namespace UI
 {
@@ -34,6 +35,8 @@ namespace UI
                     case MenuTitle.Exit:
                     Console.Clear();
                     Console.WriteLine("Thank you for using this program!");
+                    Thread.Sleep(2000);
+                    Console.Clear();
                     loop=false;
                     break;
                     default:
