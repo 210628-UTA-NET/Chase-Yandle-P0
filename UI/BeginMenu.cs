@@ -11,19 +11,19 @@ namespace UI
             Console.WriteLine("[1] to input customer information");
             Console.WriteLine("[2] to retrieve customer information");
         }
-        public string UInput()
+        public MenuTitle UInput()
         {
             string choice = Console.ReadLine();
             switch(choice)
             {
                 case "0":
-                return "Exit";
+                return MenuTitle.Exit;
                 case "1":
-                return "MInput";
+                return MenuTitle.CustInputMenu;
                 case "2":
-                return "MRead";
+                return MenuTitle.CustReadoutMenu;
                 default:
-                return "NA";
+                return MenuTitle.BaseMenu;
             }
         }
     }

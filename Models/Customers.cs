@@ -5,10 +5,11 @@ namespace Models
 {
     public class Customers
     {
-        public static List<string> cName = new List<string>();
-        public static List<string> cAddr = new List<string>();
-        public static List<string> cPhone = new List<string>();
-        public static List<string> cEmail = new List<string>();
-        public static List<string> cOrders = new List<string>();
+        public string cName { get; set; }
+        public string cAddr { get; set; }
+        public string cPhone { get; set; }
+        public string cEmail { get; set; }
+        // public List<string> cOrders { get; set; }
     }
+
 }

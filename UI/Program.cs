@@ -1,6 +1,8 @@
 ﻿using System;
 using Models;
 using System.Collections.Generic;
+using BL;
+using DL;
 
 namespace UI
 {
@@ -9,9 +11,10 @@ namespace UI
         static void Main(string[] args)
         {
             Console.Clear();
+            //call to initialize BL file so that the JSON can be imported into the customer list
             IMenu newMenu = new BeginMenu();
             bool loop = true;
-            string location = "Begin";
+            MenuTitle location = MenuTitle.BaseMenu;
             while(loop)
             {
                 Console.Clear();
@@ -20,25 +23,19 @@ namespace UI
 
                 switch(location)
                 {
-                    case "Begin":
+                    case MenuTitle.BaseMenu:
                     newMenu = new BeginMenu();
                     break;
-                    case "MInput":
-                    newMenu = new CustInMenu();
+                    case MenuTitle.CustInputMenu:
+                    newMenu = new CustInMenu(new CustomerBL(new CustRepository()));
                     break;
-                    case "MRead":
-                    newMenu = new CustRdMenu();
+                    case MenuTitle.CustReadoutMenu:
+                    newMenu = new CustRdMenu(new CustomerBL(new CustRepository()));
                     break;
-                    case "Exit":
-                    CustRdMenu.CustList();
+                    case MenuTitle.Exit:
+                    Console.Clear();
                     Console.WriteLine("Thank you for using this program!");
                     loop=false;
-                    break;
-                    case "Read":
-                    CustRdMenu.CustList();
-                    Console.WriteLine("Enter any key to return to the main menu");
-                    Console.ReadLine();
-                    newMenu = new BeginMenu();
                     break;
                     default:
                     Console.WriteLine("That input was not valid, please try again!");

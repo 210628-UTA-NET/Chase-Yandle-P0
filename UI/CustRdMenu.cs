@@ -1,40 +1,52 @@
 using System;
 using Models;
 using System.Collections.Generic;
+using BL;
 
 namespace UI
 {
     public class CustRdMenu : IMenu
     {
+        private ICustomerBL _custBL;
+        public CustRdMenu(ICustomerBL p_custBL)
+        {
+            _custBL=p_custBL;
+        }
         public void Menu()
         {
             Console.WriteLine("----Customer Readout----");
             Console.WriteLine("[0] to return to main menu");
             Console.WriteLine("[1] to retrieve all customer information");
         }
-        public string UInput()
+        public MenuTitle UInput()
         {
             string choice = Console.ReadLine();
             switch(choice)
             {
                 case "0":
-                return "Begin";
+                return MenuTitle.BaseMenu;
                 case "1":
-                return "Read";
+                List<Customers> readout = _custBL.GetAllCustomers();
+                CustList(readout);
+                return MenuTitle.BaseMenu;
                 default:
-                return "NA";
+                return MenuTitle.CustReadoutMenu;
             }
         }
-        public static void CustList()
+        public static void CustList(List<Customers> reading)
         {
             Console.Clear();
-            Console.WriteLine("Index / Name / Address / Phone / Email");
-            Console.WriteLine("=======================================");
-            for (int i = 0; i < Models.Customers.cName.Count; i++)
+            
+            Console.WriteLine("Customer List");
+            foreach (Customers cust in reading)
             {
-                Console.WriteLine(i + " / " + Models.Customers.cName[i] + " / " + Models.Customers.cAddr[i] + " / " + Models.Customers.cPhone[i] + " / " + Models.Customers.cEmail[i]);
+                Console.WriteLine("=======================================");
+                Console.WriteLine(cust.cName + cust.cAddr + cust.cPhone + cust.cEmail);
+                Console.WriteLine("=======================================");
             }
             Console.WriteLine("End of list");
+            Console.WriteLine("Enter any key to return to the main menu");
+            Console.ReadLine();
         }
     }
 }
