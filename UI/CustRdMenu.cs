@@ -41,7 +41,7 @@ namespace UI
             foreach (Customers cust in reading)
             {
                 Console.WriteLine("=======================================");
-                Console.WriteLine("Index: "+reading.IndexOf(cust)+" | Name: "+cust.cName +" | Address: "+ cust.cAddr +" | Phone: "+ cust.cPhone +" | Email: "+ cust.cEmail);
+                Console.WriteLine("Index: "+reading.IndexOf(cust)+" | Name: "+cust.cName +" | Address: "+ cust.cStreet +" | Phone: "+ cust.cPhone +" | Email: "+ cust.cEmail);
                 Console.WriteLine("=======================================");
             }
             Console.WriteLine("End of list");

@@ -2,6 +2,7 @@ using System;
 using Models;
 using System.Collections.Generic;
 using BL;
+using System.Globalization;
 
 namespace UI
 {
@@ -18,9 +19,11 @@ namespace UI
         {
             Console.WriteLine("----New Customer Input----");
             Console.WriteLine("Name: "+add.cName);
-            Console.WriteLine("Address: "+add.cAddr);
+            Console.WriteLine("Address: "+add.cStreet+" "+add.cCity+" "+add.cState);
             Console.WriteLine("Phone Number: "+add.cPhone);
             Console.WriteLine("Email: "+add.cEmail);
+            Console.WriteLine("Birthday: "+add.cBDay);
+            Console.WriteLine("Age: "+add.ageNullIfZero);
             Console.WriteLine("---------------------------");
             Console.WriteLine("[0] to return to main menu");
             Console.WriteLine("[1] to add current customer data");
@@ -29,6 +32,7 @@ namespace UI
             Console.WriteLine("[4] to add customer phone number");
             Console.WriteLine("[5] to add customer email");
             Console.WriteLine("[6] to clear current customer data");
+            Console.WriteLine("[7] to add customer age in format MM-dd-yyyy");
 
         }
         public MenuTitle UInput()
@@ -51,8 +55,12 @@ namespace UI
                 add.cName=Console.ReadLine();
                 return MenuTitle.CustInputMenu;
                 case "3":
-                Console.WriteLine("Address:");
-                add.cAddr=Console.ReadLine();
+                Console.WriteLine("Street:");
+                add.cStreet=Console.ReadLine();
+                Console.WriteLine("City:");
+                add.cCity=Console.ReadLine();
+                Console.WriteLine("State:");
+                add.cState=Console.ReadLine();
                 return MenuTitle.CustInputMenu;
                 case "4":
                 Console.WriteLine("Phone Number:");
@@ -67,16 +75,17 @@ namespace UI
                 return MenuTitle.CustInputMenu;
                 default:
                 return MenuTitle.Error;
-
+                case "7":
+                
+                Console.WriteLine("Birthday in MM-dd-yyyy: ");
+                add.cBDay=Console.ReadLine();
+                return MenuTitle.CustInputMenu;
             }          
         }
 
         private void ClearCustomer()
         {
-            add.cName=null;
-            add.cAddr=null;
-            add.cPhone=null;
-            add.cEmail=null;
+            add=new Customers();
         }
     }
 }
