@@ -7,7 +7,8 @@ namespace UI
         BaseMenu,
         CustInputMenu,
         CustReadoutMenu,
-        Exit
+        Exit,
+        Error
     }
     public interface IMenu
     {

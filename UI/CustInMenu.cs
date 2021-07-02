@@ -8,54 +8,75 @@ namespace UI
     public class CustInMenu : IMenu
     {
         private ICustomerBL _custBL;
+        private static Customers add = new Customers();
         public CustInMenu(ICustomerBL p_custBL)
         {
             _custBL=p_custBL;
         }
+
         public void Menu()
         {
             Console.WriteLine("----New Customer Input----");
+            Console.WriteLine("Name: "+add.cName);
+            Console.WriteLine("Address: "+add.cAddr);
+            Console.WriteLine("Phone Number: "+add.cPhone);
+            Console.WriteLine("Email: "+add.cEmail);
+            Console.WriteLine("---------------------------");
             Console.WriteLine("[0] to return to main menu");
-            Console.WriteLine("Please enter the first and last name of the customer:");
+            Console.WriteLine("[1] to add current customer data");
+            Console.WriteLine("[2] to add customer name");
+            Console.WriteLine("[3] to add customer address");
+            Console.WriteLine("[4] to add customer phone number");
+            Console.WriteLine("[5] to add customer email");
+            Console.WriteLine("[6] to clear current customer data");
+
         }
         public MenuTitle UInput()
         {
-            string tName;
-            string tAddr;
-            string tPhone;
-            string tEmail;
-            string tConfirm;
             string choice = Console.ReadLine();
-            if (choice=="0")
+            Console.WriteLine("--------------------");
+            switch (choice)
             {
+                case "0":
+                ClearCustomer();
                 return MenuTitle.BaseMenu;
-            }else
-            {
-                tName=choice;
-                Console.WriteLine("Please enter the customer address:");
-                tAddr=Console.ReadLine();
-                Console.WriteLine("Please enter the customer phone number:");
-                tPhone=Console.ReadLine();
-                Console.WriteLine("Please enter the customer email:");
-                tEmail=Console.ReadLine();
-
-                Console.WriteLine(tName + " / "+tAddr+" / "+tPhone+" / "+tEmail);
-                Console.WriteLine("[0] if information is incorrect or you wish to cancel");
-                Console.WriteLine("Enter any other key to proceed with customer information import");
-                tConfirm=Console.ReadLine();
-                if (tConfirm!="0")
-                {
-                    Customers add = new Customers();
-                    add.cName=tName;
-                    add.cAddr=tAddr;
-                    add.cPhone=tPhone;
-                    add.cEmail=tEmail;
-                    Console.WriteLine(_custBL.AddCustomer(add).cName);              
-                }
+                case "1":
+                _custBL.AddCustomer(add);
+                Console.WriteLine("Customer Added!  Press Enter to Continue");
+                Console.ReadLine();
+                ClearCustomer();
                 return MenuTitle.CustInputMenu;
-                
+                case "2":
+                Console.WriteLine("Name:");
+                add.cName=Console.ReadLine();
+                return MenuTitle.CustInputMenu;
+                case "3":
+                Console.WriteLine("Address:");
+                add.cAddr=Console.ReadLine();
+                return MenuTitle.CustInputMenu;
+                case "4":
+                Console.WriteLine("Phone Number:");
+                add.cPhone=Console.ReadLine();
+                return MenuTitle.CustInputMenu;
+                case "5":
+                Console.WriteLine("Email:");
+                add.cEmail=Console.ReadLine();
+                return MenuTitle.CustInputMenu;
+                case "6":
+                ClearCustomer();
+                return MenuTitle.CustInputMenu;
+                default:
+                return MenuTitle.Error;
 
-            }
+            }          
+        }
+
+        private void ClearCustomer()
+        {
+            add.cName=null;
+            add.cAddr=null;
+            add.cPhone=null;
+            add.cEmail=null;
         }
     }
 }

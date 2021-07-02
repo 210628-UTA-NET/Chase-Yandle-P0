@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using BL;
 using DL;
 using System.Threading;
+using Serilog;
 
 namespace UI
 {
@@ -42,6 +43,7 @@ namespace UI
                     default:
                     Console.WriteLine("That input was not valid, please try again!");
                     break;
+                    
                 }
             }
         }
