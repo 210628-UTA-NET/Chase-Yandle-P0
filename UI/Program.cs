@@ -47,5 +47,9 @@ namespace UI
                 }
             }
         }
+        public static string StringListOneLine(List<string> items)
+        {
+            return string.Join<string>(", ",items);
+        }
     }
 }

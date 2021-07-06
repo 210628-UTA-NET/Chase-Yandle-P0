@@ -11,6 +11,7 @@ namespace Models
         public string BirthDayFormat = "MM-dd-yyyy";
         public string ageNullIfZero;
         private int _cAge;
+        private List<string> _cSystems=new List<string>();
         public string cName { get; set; }
         public string cStreet { get; set; }
         public string cCity { get; set; }
@@ -40,9 +41,16 @@ namespace Models
             ageNullIfZero=_cAge.ToString();
         }
         }
-        public List<string> cOrders { get; set; }
-        public List<string> cConsoles { get; set; }
-
+        public List<Orders> cOrders { get; set; }
+        public List<string> cSystems
+        { get
+        {
+            return _cSystems;
+        }
+        set
+        {
+            _cSystems.AddRange(value);
+        }
+        }
     }
-
 }

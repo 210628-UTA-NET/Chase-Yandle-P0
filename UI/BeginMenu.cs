@@ -7,7 +7,7 @@ namespace UI
         public void Menu()
         {
             Console.WriteLine("----Welcome to the customer recording system!----");
-            Console.WriteLine("[0] to exit program (Warning!  All data will be lost from list but given upon exit)");
+            Console.WriteLine("[0] to exit program");
             Console.WriteLine("[1] to input customer information");
             Console.WriteLine("[2] to retrieve customer information");
         }
