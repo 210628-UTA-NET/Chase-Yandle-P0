@@ -9,8 +9,10 @@ namespace UI
 {
     public class CustInMenu : IMenu
     {
+        private List<string> tempSystems = new List<string>();
         private ICustomerBL _custBL;
         private static Customers cAdd = new Customers();
+        private static Systems cSystems = new Systems();
 
         public CustInMenu(ICustomerBL p_custBL)
         {
@@ -36,7 +38,7 @@ namespace UI
             Console.WriteLine("[5] to add customer email");
             Console.WriteLine("[6] to clear current customer data");
             Console.WriteLine("[7] to add customer age in format MM-dd-yyyy");
-            Console.WriteLine("[8] to add a console this customer owns");
+            Console.WriteLine("[8] to add or remove a console this customer owns");
         }
         public MenuTitle UInput()
         {
@@ -82,40 +84,10 @@ namespace UI
                     Console.WriteLine("Birthday in MM-dd-yyyy: ");
                     cAdd.cBDay=Console.ReadLine();
                     return MenuTitle.CustInputMenu;
-                case "8":       
-                    bool test = true;
-                    string input;
-                    while (test)
-                    {
-                        Console.Clear();
-                        List<string> tempSystems = new List<string>();
-                        tempSystems=Systems._availSystems;
-                        int stepper=0;
-                        Console.WriteLine("Consoles: "+Program.StringListOneLine(cAdd.cSystems));
-                        Console.WriteLine("[0] to go back to customer information input menu");
-                        foreach (string item in tempSystems)
-                        {
-                            Console.WriteLine("["+(stepper+1).ToString()+"] to add "+tempSystems[stepper]);
-                            stepper++;
-                        }
-                        Console.WriteLine("Add: ");
-                        input=Console.ReadLine();
-                        int toIntInput = int.Parse(input);
-
-                        if(input == "0")
-                        {
-                            test=false;
-                            return MenuTitle.CustInputMenu;
-                        } else if (toIntInput<=tempSystems.Count)
-                        {
-                            cAdd.cSystems.Add(tempSystems[toIntInput-1]);
-                            tempSystems.RemoveAt(toIntInput-1);
-                        } else
-                        {
-                            Console.WriteLine("Input not valid");
-                            Thread.Sleep(2000);
-                        }
-                    }
+                case "8":
+                        cAdd.cSystems.Clear();
+                        cSystems = new Systems();         
+                        AddSystems();
                         return MenuTitle.CustInputMenu;  
             }          
         }
@@ -123,6 +95,40 @@ namespace UI
         private void ClearCustomer()
         {
             cAdd=new Customers();
+        }
+
+        private void AddSystems()
+        {
+            bool test = true;
+            string input;
+            while (test)
+            {
+                Console.Clear();
+                int stepper=0;
+                Console.WriteLine("Consoles: "+Program.StringListOneLine(cAdd.cSystems));
+                Console.WriteLine("[0] to go back to customer information input menu");
+                foreach (string item in cSystems._availSystems)
+                {
+                    Console.WriteLine("["+(stepper+1).ToString()+"] to add "+cSystems._availSystems[stepper]);
+                    stepper++;
+                }
+                Console.WriteLine("Add: ");
+                input=Console.ReadLine();
+                int toIntInput = int.Parse(input);
+
+                if(input == "0")
+                {
+                    test=false;
+                } else if (toIntInput<=cSystems._availSystems.Count)
+                {
+                    cAdd.cSystems.Add(cSystems._availSystems[toIntInput-1]);
+                    cSystems._availSystems.RemoveAt(toIntInput-1);
+                }else
+                {
+                    Console.WriteLine("Input not valid");
+                    Thread.Sleep(2000);
+                }
+            }
         }
     }
 }

@@ -9,8 +9,9 @@ namespace Models
     }
     public class Systems
     {
-        public static List<string> _availSystems = new List<string>()
+        public List<string> _availSystems = new List<string>()
         {
+            //Will change to call the list of systems from the product JSON file
             "Playstation 3",
             "Playstation 4",
             "Playstation 5",
