@@ -9,7 +9,7 @@ namespace UI
 {
     public class LoginMenu
     {
-        public static string storeID;
+        public static string storeID="0000";
         public static Stores hub = new Stores();
         public static int customersAddedFrom;
         public static void Login()
@@ -19,6 +19,7 @@ namespace UI
             string selection = Console.ReadLine();
             if (selection=="0")
             {
+                Console.WriteLine("[0] Will use store 0000 (The Void)");
                 selection=StoreList();
             } else
             {

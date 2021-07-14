@@ -17,7 +17,6 @@ namespace UI
         static void Main(string[] args)
         {
             Console.Clear();
-            Console.ReadLine();
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsetting.json")
@@ -26,10 +25,10 @@ namespace UI
             DbContextOptions<DemoDbContext> options = new DbContextOptionsBuilder<DemoDbContext>()
             .UseSqlServer(connectionString)
             .Options;
-            SplashScreen.SplashMessage();
-            Thread.Sleep(2000);
             Console.Clear();
             LoginMenu.Login();
+            SplashScreen.SplashMessage();
+            Thread.Sleep(2000);
             IMenu newMenu = new MainMenu();
             bool loop = true;
             MenuTitle location = MenuTitle.MainMenu;
@@ -102,6 +101,7 @@ namespace UI
                     break;                 
                     default:
                     Console.WriteLine("That input was not valid, please try again!");
+                    Thread.Sleep(2000);
                     break;
                     
                 }

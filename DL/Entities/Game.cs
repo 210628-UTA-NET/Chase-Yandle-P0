@@ -15,7 +15,6 @@ namespace DL.Entities
         public string Name { get; set; }
         public int? AgeRating { get; set; }
         public DateTime ReleaseDate { get; set; }
-
         public virtual ICollection<GamesOnSystem> GamesOnSystems { get; set; }
     }
 }
