@@ -6,7 +6,7 @@ using Models;
 
 namespace DL
 {
-    public class CustRepository : IRepository
+    public class CustRepository
     {
         private const string _custFilePath = "./../DL/Database/Customers.json";
         private string _jsonString;
@@ -45,6 +45,20 @@ namespace DL
         }
 
         public Customers GetCustomer(Customers p_cust)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customers EditCustomer(Customers p_cust)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Customers> FilterCustomer(Customers p_cust)
+        {
+            throw new NotImplementedException();
+        }
+        public Customers DeleteCustomer(Customers p_cust)
         {
             throw new NotImplementedException();
         }
