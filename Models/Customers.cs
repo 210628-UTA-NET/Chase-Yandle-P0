@@ -52,5 +52,7 @@ namespace Models
             _cSystems.AddRange(value);
         }
         }
+        public string cStoreAddedAt { get; set; }
+        public string cID { get; set; }
     }
 }
