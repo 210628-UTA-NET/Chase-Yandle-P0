@@ -16,6 +16,8 @@ namespace UI
     {
         static void Main(string[] args)
         {
+            Console.Clear();
+            Console.ReadLine();
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsetting.json")
@@ -56,6 +58,7 @@ namespace UI
                     case MenuTitle.Exit:
                     Console.Clear();
                     SplashScreen.SplashMessage();
+                    Console.WriteLine();
                     Console.WriteLine("Thank you for using this program!");
                     Thread.Sleep(2000);
                     Console.Clear();
