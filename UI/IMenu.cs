@@ -4,9 +4,25 @@ namespace UI
 {
     public enum MenuTitle
     {
-        BaseMenu,
-        CustInputMenu,
-        CustReadoutMenu,
+        SplashMenu,
+        LoginMenu,
+        MainMenu,
+        AddMenu,
+        SearchMenu,
+        OrderMenu,
+        CustomerAddMenu,
+        LocationAddMenu,
+        CustomerSearchMenu,
+        LocationSearchMenu,
+        ProductSearchMenu,
+        GameSearchMenu,
+        SystemSearchMenu,
+        InventoryMenu,
+        OrderSearchMenu,
+        CustomerOrderMenu,
+        StockOrderMenu,
+        StockOrderSearchMenu,
+        CustomerOrderSearchMenu,
         Exit,
         Error
     }
